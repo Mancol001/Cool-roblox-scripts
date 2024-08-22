@@ -1,0 +1,95 @@
+-- kick everyone
+
+for _, player in pairs(game.Players:GetPlayers()) do
+    player:Kick("server shuted down")
+end
+
+-- deletes all parts
+
+for _, PArts in ipairs(workspace:GetDescendants()) do
+    PArts:Destroy()
+end
+
+
+-- spawns part to infiity
+
+while true do
+    wait()
+    Instance.new("Part", game.Workspace)
+end
+
+-- ray x players
+
+local Players = game:GetService("Players")
+
+local function ApplyEffect(part)
+	local highlight = Instance.new("Highlight")
+	highlight.Parent = part
+end
+
+for _, player in ipairs(Players:GetPlayers()) do
+	local character = player.Character
+	if character then
+		for _, part in ipairs(character:GetDescendants()) do
+			if part:IsA("BasePart") then
+				ApplyEffect(part)
+			end
+		end
+	end
+end
+
+-- remove ray x 
+
+local Players = game:GetService("Players")
+
+local function RemoveEffect(part)
+	local highlight = part:FindFirstChildOfClass("Highlight")
+	if highlight then
+		highlight:Destroy()
+	end
+end
+
+for _, player in ipairs(Players:GetPlayers()) do
+	local character = player.Character
+	if character then
+		for _, part in ipairs(character:GetDescendants()) do
+			if part:IsA("BasePart") then
+				RemoveEffect(part)
+			end
+		end
+	end
+end
+
+
+--kill player
+
+game.Players.playername.Character.Humanoid.Health = 0
+
+
+kill all
+
+for _, player in ipairs(game.Players:GetPlayers()) do
+	local character = player.Character
+	if character and character:FindFirstChild("Humanoid") then
+		character.Humanoid.Health = 0
+	end
+end
+
+-- msg
+
+local msg = Instance.new("Message", game.Workspace)
+msg.Text = "your text here"
+wait(3)
+msg:Destroy()
+
+-- music
+
+local music = Instance.new("Sound", game.StarterGui)
+music.SoundId = "rbxassetid://1837879082"
+music.Looped = true
+music:Play()
+
+
+-- tp
+game.Players.plrnameToTeleprt.Character.HumanoidRootPart.CFrame = game.Players.yourname.Character.HumanoidRootPart.CFrame
+game.Players.plrnameToTeleprt.Character.HumanoidRootPart.CFrame = CFrame.new(-83, 3181, 84.5) -- only admin
